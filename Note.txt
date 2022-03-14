@@ -1,0 +1,14 @@
+React Front To Back 2022
+https://www.udemy.com/course/react-front-to-back-2022/learn/lecture/29767686#content
+
+https://github.com/bradtraversy/feedback-app
+https://github.com/bradtraversy/github-finder-app
+https://github.com/bradtraversy/house-marketplace
+https://gist.github.com/bradtraversy
+
+Part 1 is at C:\react\feedback-app
+
+=============================================================================
+
+PS C:\react> npx create-react-app github-finder --use-npm
+PS C:\react\github-finder> npm install -D tailwindcss postcss autoprefixer
