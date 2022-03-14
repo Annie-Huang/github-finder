@@ -17,3 +17,14 @@ PS C:\react> npx create-react-app github-finder --use-npm
 PS C:\react\github-finder> npm install -D tailwindcss postcss autoprefixer
 PS C:\react\github-finder> npx tailwindcss init -p
 PS C:\react\github-finder> npm i daisyui
+
+---------------
+How to change theme for tailwind
+
+https://daisyui.com/docs/themes/
+<html lang="en" data-theme="cyberpunk">
+
+---------------
+---------------
+---------------
+---------------
