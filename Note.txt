@@ -6,9 +6,12 @@ https://github.com/bradtraversy/github-finder-app
 https://github.com/bradtraversy/house-marketplace
 https://gist.github.com/bradtraversy
 
+https://tailwindcss.com/docs/guides/create-react-app
+
 Part 1 is at C:\react\feedback-app
 
 =============================================================================
 
 PS C:\react> npx create-react-app github-finder --use-npm
 PS C:\react\github-finder> npm install -D tailwindcss postcss autoprefixer
+PS C:\react\github-finder> npx tailwindcss init -p
