@@ -8,6 +8,7 @@ https://gist.github.com/bradtraversy
 
 https://tailwindcss.com/docs/guides/create-react-app
 https://daisyui.com/
+https://docs.github.com/en/rest/overview/resources-in-the-rest-api
 
 Part 1 is at C:\react\feedback-app
 
@@ -19,6 +20,10 @@ PS C:\react\github-finder> npx tailwindcss init -p
 PS C:\react\github-finder> npm i daisyui
 PS C:\react\github-finder> npm i react-router-dom react-icons
 
+https://api.github.com/users
+https://api.github.com/users/bradtraversy
+https://api.github.com/search/users?q=brad
+
 ---------------
 How to change theme for tailwind
 
@@ -26,6 +31,19 @@ https://daisyui.com/docs/themes/
 <html lang="en" data-theme="cyberpunk">
 
 ---------------
+Response header from api:
+
+X-RateLimit-Limit: 10       <<< total request you can make per minute
+X-RateLimit-Remaining: 9    <<< total remaining request you can still make in the current limit
+
 ---------------
+Set up new access token for github
+-> Login to github -> go to Settings / Developer settings -> click Person access tokens -> choose repo and user from the list. -> Generate token
+-> a token string will appear on the page.
+
+(I didn't do this step).
+If you want to test, you can go to postman -> authorization -> TYPE: Bearer Token -> enter the token that generated -> call a api again, and you can see
+X-RateLimit-Limit: 30       <<< increase to 30
+
 ---------------
 ---------------
