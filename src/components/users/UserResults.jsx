@@ -1,6 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const UserResults = () => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -13,7 +16,8 @@ const UserResults = () => {
     });
 
     const data = await response.json();
-    console.log(data);
+    setUsers(data);
+    setLoading(false);
   };
 
   return <div>user results</div>;
