@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 const GithubContext = createContext();
 
@@ -21,18 +21,19 @@ export const GithubProvider = ({ children }) => {
     console.log(data);
     setUsers(data);
     setLoading(false);
-
-    return (
-      <GithubProvider.Provider
-        value={{
-          users,
-          loading,
-        }}
-      >
-        {children}
-      </GithubProvider.Provider>
-    );
   };
+
+  return (
+    <GithubContext.Provider
+      value={{
+        users,
+        loading,
+        fetchUsers,
+      }}
+    >
+      {children}
+    </GithubContext.Provider>
+  );
 };
 
 export default GithubContext;
