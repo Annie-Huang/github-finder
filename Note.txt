@@ -48,7 +48,7 @@ If you want to test, you can go to postman -> authorization -> TYPE: Bearer Toke
 X-RateLimit-Limit: 30       <<< increase to 30
 
 ---------------
-Fetch call:
+Fetch call in the component:
 
   useEffect(() => {
     fetchUsers();
@@ -63,6 +63,13 @@ Fetch call:
   };
 
 ---------------
+Make fetch call in the context:
+
+  const { users, loading, fetchUsers } = useContext(GithubContext);
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
 ---------------
 ---------------
 ---------------
