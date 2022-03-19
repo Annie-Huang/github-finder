@@ -48,7 +48,10 @@ If you want to test, you can go to postman -> authorization -> TYPE: Bearer Toke
 X-RateLimit-Limit: 30       <<< increase to 30
 
 ---------------
-Fetch call in the component:
+Make Fetch call in the component:
+
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchUsers();
@@ -65,12 +68,80 @@ Fetch call in the component:
 ---------------
 Make fetch call in the context:
 
+component:
   const { users, loading, fetchUsers } = useContext(GithubContext);
   useEffect(() => {
     fetchUsers();
   }, []);
 
+context:
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchUsers = async () => {
+    const response = await fetch(`${GITHUB_URL}/users`);
+    const data = await response.json();
+    console.log(data);
+    setUsers(data);
+    setLoading(false);
+  };
+  return (
+    <GithubContext.Provider
+      value={{
+        users,
+        loading,
+        fetchUsers,
+      }}
+    >
+      {children}
+    </GithubContext.Provider>
+  );
+
 ---------------
+Make fetch call through useReduce:
+
+component (stay the same)
+
+context:
+  const initialState = {
+    users: [],
+    loading: true,
+  };
+
+  const [state, dispatch] = useReducer(githubReducer, initialState);
+
+  const fetchUsers = async () => {
+    const response = await fetch(`${GITHUB_URL}/users`);
+    const data = await response.json();
+    dispatch({ type: 'GET_USERS', payload: data });
+  };
+
+  return (
+    <GithubContext.Provider
+      value={{
+        users: state.users,
+        loading: state.loading,
+        fetchUsers,
+      }}
+    >
+      {children}
+    </GithubContext.Provider>
+  );
+
+reducer:
+  const githubReducer = (state, action) => {
+    switch (action.type) {
+      case 'GET_USERS':
+        return {
+          ...state,
+          users: action.payload,
+          loading: false,
+        };
+      default:
+        return state;
+    }
+  };
+
 ---------------
 ---------------
 ---------------
