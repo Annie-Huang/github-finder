@@ -48,4 +48,22 @@ If you want to test, you can go to postman -> authorization -> TYPE: Bearer Toke
 X-RateLimit-Limit: 30       <<< increase to 30
 
 ---------------
+Fetch call:
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  const fetchUsers = async () => {
+    const response = await fetch(`${process.env.REACT_APP_GITHUB_URL}/users`);
+    const data = await response.json();
+    console.log(data);
+    setUsers(data);
+    setLoading(false);
+  };
+
+---------------
+---------------
+---------------
+---------------
 ---------------
