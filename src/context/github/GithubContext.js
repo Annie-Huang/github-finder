@@ -26,6 +26,7 @@ export const GithubProvider = ({ children }) => {
 
   const initialState = {
     users: [],
+    user: {},
     loading: false,
   };
 
@@ -54,10 +55,21 @@ export const GithubProvider = ({ children }) => {
       q: text,
     });
 
+    // https://api.github.com/search/users?q=brad
     const response = await fetch(`${GITHUB_URL}/search/users?${params}`);
 
     const { items } = await response.json();
     dispatch({ type: 'GET_USERS', payload: items });
+  };
+
+  // Get single results
+  const getUser = async (login) => {
+    setLoading();
+
+    const response = await fetch(`${GITHUB_URL}/users/${login}`);
+
+    const data = await response.json();
+    dispatch({ type: 'GET_USER', payload: data });
   };
 
   // Clear Users from state
@@ -72,9 +84,11 @@ export const GithubProvider = ({ children }) => {
     <GithubContext.Provider
       value={{
         users: state.users,
+        user: state.user,
         loading: state.loading,
         fetchUsers,
         searchUsers,
+        getUser,
         clearUsers,
       }}
     >
