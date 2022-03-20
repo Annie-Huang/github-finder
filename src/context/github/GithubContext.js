@@ -62,14 +62,18 @@ export const GithubProvider = ({ children }) => {
     dispatch({ type: 'GET_USERS', payload: items });
   };
 
-  // Get single results
+  // Get single user
   const getUser = async (login) => {
     setLoading();
 
     const response = await fetch(`${GITHUB_URL}/users/${login}`);
 
-    const data = await response.json();
-    dispatch({ type: 'GET_USER', payload: data });
+    if (response.status === 404) {
+      window.location = '/notfound';
+    } else {
+      const data = await response.json();
+      dispatch({ type: 'GET_USER', payload: data });
+    }
   };
 
   // Clear Users from state

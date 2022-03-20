@@ -160,4 +160,20 @@ context:
    };
 
 ---------------
+Redirect to another location if api return error:
+
+context:
+  const getUser = async (login) => {
+    setLoading();
+
+    const response = await fetch(`${GITHUB_URL}/users/${login}`);
+
+    if (response.status === 404) {
+      window.location = '/notfound';
+    } else {
+      const data = await response.json();
+      dispatch({ type: 'GET_USER', payload: data });
+    }
+  };
+
 ---------------
