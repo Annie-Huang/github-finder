@@ -143,5 +143,20 @@ reducer:
   };
 
 ---------------
+How to create URL parameter:
+
+   const searchUsers = async (text) => {
+     setLoading();
+
+     const params = new  URLSearchParams({
+       q: text,
+     });
+
+     const response = await fetch(`${GITHUB_URL}/search/users?${params}`);
+
+     const { items } = await response.json();
+     dispatch({ type: 'GET_USERS', payload: items });
+   };
+
 ---------------
 ---------------
