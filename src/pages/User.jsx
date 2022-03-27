@@ -4,13 +4,19 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import GithubContext from '../context/github/GithubContext';
 import Spinner from '../components/layout/Spinner';
+import RepoList from '../components/RepoList';
 
 const User = () => {
-  const { getUser, user, loading } = useContext(GithubContext);
+  const { getUser, user, loading, getUserRepos, repos } = useContext(
+    GithubContext
+  );
 
   const params = useParams();
 
-  useEffect(() => getUser(params.login), []);
+  useEffect(() => {
+    getUser(params.login);
+    getUserRepos(params.login);
+  }, []);
 
   const {
     name,
@@ -113,6 +119,7 @@ const User = () => {
             </div>
           </div>
         </div>
+
         <div className='w-full py-5 mb-6 rounded-lg shadow-mg bg-base-100 stats'>
           <div className='stat'>
             <div className='stat-figure text-secondary'>
@@ -154,6 +161,8 @@ const User = () => {
             </div>
           </div>
         </div>
+
+        <RepoList repos={repos} />
       </div>
     </>
   );
