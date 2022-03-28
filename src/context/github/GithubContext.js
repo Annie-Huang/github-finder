@@ -81,8 +81,16 @@ export const GithubProvider = ({ children }) => {
   const getUserRepos = async (login) => {
     setLoading();
 
+    const params = new URLSearchParams({
+      sort: 'created',
+      per_page: 10,
+    });
+
     // https://api.github.com/users/bradtraversy/repos
-    const response = await fetch(`${GITHUB_URL}/users/${login}/repos`);
+    // https://api.github.com/users/bradtraversy/repos?sort=created&per_page=10
+    const response = await fetch(
+      `${GITHUB_URL}/users/${login}/repos?${params}`
+    );
 
     const data = await response.json();
     dispatch({ type: 'GET_REPOS', payload: data });
