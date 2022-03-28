@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RepoList = () => {
+const RepoList = ({ repos }) => {
   return <div>Repos</div>;
 };
 
