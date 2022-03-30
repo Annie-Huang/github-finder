@@ -48,7 +48,7 @@ export const GithubProvider = ({ children }) => {
     dispatch({ type: 'GET_USERS', payload: data });
   };
 
-  // Get search results
+  /*  // Get search results
   const searchUsers = async (text) => {
     setLoading();
 
@@ -61,7 +61,7 @@ export const GithubProvider = ({ children }) => {
 
     const { items } = await response.json();
     dispatch({ type: 'GET_USERS', payload: items });
-  };
+  };*/
 
   // Get single user
   const getUser = async (login) => {
