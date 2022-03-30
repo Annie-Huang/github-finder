@@ -18,12 +18,15 @@ export const searchUsers = async (text) => {
     q: text,
   });
 
-  // https://api.github.com/search/users?q=brad
+  /*  // https://api.github.com/search/users?q=brad
   const response = await fetch(`${GITHUB_URL}/search/users?${params}`);
 
   const { items } = await response.json();
   // dispatch({ type: 'GET_USERS', payload: items });
-  return items;
+  return items;*/
+
+  const response = await github.get(`${GITHUB_URL}/search/users?${params}`);
+  return response.data.items;
 };
 
 // Get single user
