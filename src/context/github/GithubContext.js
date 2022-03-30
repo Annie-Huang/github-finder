@@ -61,7 +61,7 @@ export const GithubProvider = ({ children }) => {
 
     const { items } = await response.json();
     dispatch({ type: 'GET_USERS', payload: items });
-  };*/
+  };
 
   // Get single user
   const getUser = async (login) => {
@@ -94,7 +94,7 @@ export const GithubProvider = ({ children }) => {
 
     const data = await response.json();
     dispatch({ type: 'GET_REPOS', payload: data });
-  };
+  };*/
 
   // Clear Users from state
   const clearUsers = () => {
@@ -115,9 +115,9 @@ export const GithubProvider = ({ children }) => {
         dispatch,
         fetchUsers,
         // searchUsers,
-        getUser,
+        // getUser,
         clearUsers,
-        getUserRepos,
+        // getUserRepos,
       }}
     >
       {children}
