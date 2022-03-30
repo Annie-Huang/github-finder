@@ -19,6 +19,7 @@ PS C:\react\github-finder> npm install -D tailwindcss postcss autoprefixer
 PS C:\react\github-finder> npx tailwindcss init -p
 PS C:\react\github-finder> npm i daisyui
 PS C:\react\github-finder> npm i react-router-dom react-icons
+PS C:\react\github-finder> npm i axios
 
 https://api.github.com/users
 https://api.github.com/users/bradtraversy
