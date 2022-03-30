@@ -33,7 +33,7 @@ export const GithubProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
-  // Get initial users (testing purposes)
+  /* // Get initial users (testing purposes)
   const fetchUsers = async () => {
     setLoading();
 
@@ -48,7 +48,7 @@ export const GithubProvider = ({ children }) => {
     dispatch({ type: 'GET_USERS', payload: data });
   };
 
-  /*  // Get search results
+  // Get search results
   const searchUsers = async (text) => {
     setLoading();
 
@@ -94,7 +94,7 @@ export const GithubProvider = ({ children }) => {
 
     const data = await response.json();
     dispatch({ type: 'GET_REPOS', payload: data });
-  };*/
+  };
 
   // Clear Users from state
   const clearUsers = () => {
@@ -103,6 +103,7 @@ export const GithubProvider = ({ children }) => {
 
   // Set loading:
   const setLoading = () => dispatch({ type: 'SET_LOADING' });
+*/
 
   return (
     <GithubContext.Provider
@@ -113,10 +114,10 @@ export const GithubProvider = ({ children }) => {
         // loading: state.loading,
         ...state,
         dispatch,
-        fetchUsers,
+        // fetchUsers,
         // searchUsers,
         // getUser,
-        clearUsers,
+        // clearUsers,
         // getUserRepos,
       }}
     >
