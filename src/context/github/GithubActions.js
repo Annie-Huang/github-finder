@@ -29,7 +29,7 @@ export const searchUsers = async (text) => {
   return response.data.items;
 };
 
-// Get single user
+/*// Get single user
 export const getUser = async (login) => {
   // setLoading();
 
@@ -60,4 +60,18 @@ export const getUserRepos = async (login) => {
   const data = await response.json();
   // dispatch({ type: 'GET_REPOS', payload: data });
   return data;
+};*/
+
+export const getUserAndRepos = async (login) => {
+  const params = new URLSearchParams({
+    sort: 'created',
+    per_page: 10,
+  });
+
+  const [user, repos] = await Promise.all([
+    github.get(`${GITHUB_URL}/users/${login}`),
+    github.get(`${GITHUB_URL}/users/${login}/repos?${params}`),
+  ]);
+
+  return { user: user.data, repos: repos.data };
 };
