@@ -11,6 +11,9 @@ https://daisyui.com/
 https://docs.github.com/en/rest/overview/resources-in-the-rest-api
 
 Part 1 is at C:\react\feedback-app
+This project is Part 2
+Part 3 is at C:\react\react-sandbox
+Part 4 is at C:\react\house-marketplace
 
 =============================================================================
 
